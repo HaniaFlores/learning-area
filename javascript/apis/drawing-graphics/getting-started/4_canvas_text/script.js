@@ -6,13 +6,18 @@ const ctx = canvas.getContext('2d');
 ctx.fillStyle = 'rgb(0,0,0)';
 ctx.fillRect(0,0,width,height);
 
-ctx.strokeStyle = 'white';
-ctx.lineWidth = 1;
-ctx.font = '36px arial';
-ctx.strokeText('Canvas text', 50, 50);
+/* we create a new HTMLImageElement object using the Image() constructor. */
+const image = new Image();
+image.src = "firefox.png";
 
-ctx.fillStyle = 'red';
-ctx.font = '48px georgia';
-ctx.fillText('Canvas text', 50, 150);
+/* embed the image using drawImage(), but 
+we make sure the image file has been loaded first. */
+`image.addEventListener("load", () =>
+    ctx.drawImage(image, 20, 20));`
 
-canvas.setAttribute('aria-label', 'Canvas text');
+/* if we want to display only a part of the image,
+ or to resize it */
+image.addEventListener("load", () =>
+ctx.drawImage(image, 20, 20, 185, 175, 50, 50, 185, 175));
+
+canvas.setAttribute("aria-label", "Firefox Logo");
