@@ -6,12 +6,15 @@ const ctx = canvas.getContext('2d');
 ctx.fillStyle = 'rgb(0,0,0)';
 ctx.fillRect(0,0,width,height);
 
+/* moves the origin point of the canvas */
 ctx.translate(width/2, height/2);
 
+/* converts degrees to radians */
 function degToRad(degrees) {
   return degrees * Math.PI / 180;
 };
 
+/* returns a random number between given lower and upper bounds */
 function rand(min, max) {
   return Math.floor(Math.random() * (max-min+1)) + (min);
 }
@@ -19,6 +22,8 @@ function rand(min, max) {
 let length = 250;
 let moveOffset = 20;
 
+/* we'll draw something on the canvas inside the for loop,
+and iterate on it each time */
 for (let i = 0; i < length; i++) {
   ctx.fillStyle = `rgba(${255-length},0,${255-length},0.9)`;
   ctx.beginPath();
